@@ -1,25 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Link, useHistory, useLocation } from 'react-router-dom'
 import { SIGNOUT } from '../../constants/actionTypes'
-import { PROFILE } from '../../constants/storageKeys'
 import { useDispatch, useSelector } from 'react-redux'
-import { useUser, useUserUpdate } from '../contexts/UserContext'
 
 export default function Navbar() {
   const dispatch = useDispatch()
   const history = useHistory()
   const location = useLocation()
-  // const user = useUser()
-  // const updateUser = useUserUpdate()
-  const user = useSelector((state) => state.auth)
-
-  useEffect(() => {
-    // updateUser()
-  }, [location])
-
-  const logout = () => {
-    dispatch({ type: SIGNOUT })
-  }
+  const user = useSelector((state) => state.user)
 
   const goBackInUrl = () => {
     history.goBack()
@@ -44,7 +32,7 @@ export default function Navbar() {
             </>
           )}
           <p>{user?.profile?.name}</p>
-          <button onClick={logout}>Logout</button>
+          <button onClick={() => dispatch({ type: SIGNOUT })}>Logout</button>
           {location.pathname !== '/questionForm' ? (
             <>
               <Link to="/questionForm">

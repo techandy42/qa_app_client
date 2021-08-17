@@ -1,19 +1,27 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { PROFILE } from '../../../constants/storageKeys'
-import { useUser, useUserUpdate } from '../../contexts/UserContext'
+import { QUESTION, ANSWER } from '../../../constants/postTypes'
+import { upvoteQuestion } from '../../../actions/questionActions'
 
 export default function UpvotePost({ post, type }) {
   const dispatch = useDispatch()
-  // const user = useUser()
-  // const updateUser = useUserUpdate()
-  const user = useSelector((state) => state.auth)
+  const user = useSelector((state) => state.user)
 
-  console.log(user)
+  const handleUpvote = () => {
+    switch (type) {
+      case QUESTION:
+        dispatch(upvoteQuestion(post._id, post, user))
+        break
+      case ANSWER:
+        break
+      default:
+        break
+    }
+  }
 
   return (
     <div>
-      <button>
+      <button onClick={handleUpvote}>
         {`Upvote${post.upvotes.length > 1 ? 's' : ''}`} {post.upvotes.length}
       </button>
     </div>
