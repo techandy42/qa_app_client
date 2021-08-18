@@ -1,13 +1,21 @@
-import React, { useState } from 'react'
+import React, { useEffect } from 'react'
 import moment from 'moment'
 import Questions from './Questions'
 import UpvotePost from '../votePost/UpvotePost'
 import DownvotePost from '../votePost/DownvotePost'
-import { PROFILE } from '../../../constants/storageKeys'
 import { QUESTION } from '../../../constants/postTypes'
+import AnswerForm from '../answers/AnswerForm'
+import { useDispatch, useSelector } from 'react-redux'
+import Answers from '../answers/Answers'
+import { getAnswers } from '../../../actions/answerActions'
 
 export default function QuestionRoute({ question }) {
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem(PROFILE)))
+  const user = useSelector((state) => state.user)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getAnswers(question._id))
+  }, [question])
 
   return (
     <div>
@@ -35,6 +43,8 @@ export default function QuestionRoute({ question }) {
           <p>Downvotes: {question.downvotes.length}</p>
         </>
       )}
+      {user && <AnswerForm question={question} />}
+      <Answers />
       <Questions isInsideQuestionRoute={true} questionId={question._id} />
     </div>
   )

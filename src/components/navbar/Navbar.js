@@ -2,12 +2,17 @@ import React from 'react'
 import { Link, useHistory, useLocation } from 'react-router-dom'
 import { SIGNOUT } from '../../constants/actionTypes'
 import { useDispatch, useSelector } from 'react-redux'
+import { DEFAULT } from '../../constants/themeTypes'
 
 export default function Navbar() {
   const dispatch = useDispatch()
   const history = useHistory()
   const location = useLocation()
   const user = useSelector((state) => state.user)
+
+  const signout = () => {
+    dispatch({ type: SIGNOUT })
+  }
 
   const goBackInUrl = () => {
     history.goBack()
@@ -27,12 +32,12 @@ export default function Navbar() {
           ) : (
             <>
               <div
-                style={{ height: '100px', width: '100px', backgroundColor: user?.profile?.theme ? user?.profile?.theme : 'yellow' }}
+                style={{ height: '100px', width: '100px', backgroundColor: user?.profile?.theme ? user?.profile?.theme : DEFAULT }}
               ></div>
             </>
           )}
           <p>{user?.profile?.name}</p>
-          <button onClick={() => dispatch({ type: SIGNOUT })}>Logout</button>
+          <button onClick={() => signout()}>Logout</button>
           {location.pathname !== '/questionForm' ? (
             <>
               <Link to="/questionForm">

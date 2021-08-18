@@ -21,9 +21,15 @@ export default function UpvotePost({ post, type }) {
 
   return (
     <div>
-      <button onClick={handleUpvote}>
-        {`Upvote${post.upvotes.length > 1 ? 's' : ''}`} {post.upvotes.length}
-      </button>
+      {user ? (
+        <button onClick={handleUpvote}>
+          {`Upvote${post.upvotes.length > 1 ? 's' : ''}`} {post.upvotes.length}
+        </button>
+      ) : (
+        <p>
+          {`Upvote${post.upvotes.length > 1 ? 's' : ''}`} {post.upvotes.length}
+        </p>
+      )}
     </div>
   )
 }

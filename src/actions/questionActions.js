@@ -1,13 +1,20 @@
-import { FETCH_ALL, CREATE, DELETE, UPDATE, UPVOTE, DOWNVOTE } from '../constants/actionTypes'
+import {
+  FETCH_ALL_QUESTIONS,
+  CREATE_QUESTION,
+  DELETE_QUESTION,
+  UPDATE_QUESTION,
+  UPVOTE_QUESTION,
+  DOWNVOTE_QUESTION,
+} from '../constants/actionTypes'
 import * as API from '../apis/appApi'
-import applyUpvote from './applyUpvote/applyUpvote'
-import applyDownvote from './applyDownvote/applyDownvote'
+import applyUpvote from './applyVote/applyUpvote'
+import applyDownvote from './applyVote/applyDownvote'
 
 export const getQuestions = () => async (dispatch) => {
   try {
     const { data } = await API.getQuestions()
 
-    dispatch({ type: FETCH_ALL, payload: data })
+    dispatch({ type: FETCH_ALL_QUESTIONS, payload: data })
   } catch (error) {
     console.log(error)
     console.log('Error in fetching questions')
@@ -18,7 +25,7 @@ export const createQuestion = (question) => async (dispatch) => {
   try {
     const { data } = await API.createQuestion(question)
 
-    dispatch({ type: CREATE, payload: data })
+    dispatch({ type: CREATE_QUESTION, payload: data })
   } catch (error) {
     console.log(error)
     console.log('Error in creating the question')
@@ -27,7 +34,7 @@ export const createQuestion = (question) => async (dispatch) => {
 
 export const deleteQuestion = (id) => async (dispatch) => {
   try {
-    dispatch({ type: DELETE, payload: id })
+    dispatch({ type: DELETE_QUESTION, payload: id })
 
     await API.deleteQuestion(id)
   } catch (error) {
@@ -38,7 +45,7 @@ export const deleteQuestion = (id) => async (dispatch) => {
 
 export const updateQuestion = (id, question) => async (dispatch) => {
   try {
-    dispatch({ type: UPDATE, payload: question })
+    dispatch({ type: UPDATE_QUESTION, payload: question })
 
     await API.updateQuestion(id, question)
   } catch (error) {
@@ -49,7 +56,7 @@ export const updateQuestion = (id, question) => async (dispatch) => {
 
 export const upvoteQuestion = (id, question, user) => async (dispatch) => {
   try {
-    dispatch({ type: UPVOTE, payload: applyUpvote(question, user) })
+    dispatch({ type: UPVOTE_QUESTION, payload: applyUpvote(question, user) })
 
     await API.upvoteQuestion(id)
   } catch (error) {
@@ -60,7 +67,7 @@ export const upvoteQuestion = (id, question, user) => async (dispatch) => {
 
 export const downvoteQuestion = (id, question, user) => async (dispatch) => {
   try {
-    dispatch({ type: DOWNVOTE, payload: applyDownvote(question, user) })
+    dispatch({ type: DOWNVOTE_QUESTION, payload: applyDownvote(question, user) })
 
     await API.downvoteQuestion(id)
   } catch (error) {

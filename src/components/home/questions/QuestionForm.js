@@ -33,13 +33,13 @@ export default function QuestionForm() {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <AutosizingTextarea labelName="Title" fieldName="title" type="text" value={question.title} handleChange={handleChange} />
+        <AutosizingTextarea labelName="Title" fieldName="title" value={question.title} handleChange={handleChange} isQuestionField={true} />
         <AutosizingTextarea
           labelName="Description"
           fieldName="description"
-          type="text"
           value={question.description}
           handleChange={handleChange}
+          isQuestionField={true}
         />
         <label htmlFor="tags">Tags</label>
         <input id="tags" name="tags" type="text" value={question.tags} onChange={handleChange} />

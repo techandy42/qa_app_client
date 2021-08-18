@@ -21,9 +21,15 @@ export default function DownvotePost({ post, type }) {
 
   return (
     <div>
-      <button onClick={handleDownvote}>
-        {`Downvote${post.downvotes.length > 1 ? 's' : ''}`} {post.downvotes.length}
-      </button>
+      {user ? (
+        <button onClick={handleDownvote}>
+          {`Downvote${post.downvotes.length > 1 ? 's' : ''}`} {post.downvotes.length}
+        </button>
+      ) : (
+        <p>
+          {`Downvote${post.downvotes.length > 1 ? 's' : ''}`} {post.downvotes.length}
+        </p>
+      )}
     </div>
   )
 }

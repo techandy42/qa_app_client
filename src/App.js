@@ -18,8 +18,6 @@ function App() {
 
   const questions = useSelector((state) => state.questions)
 
-  console.log(questions)
-
   return (
     <BrowserRouter>
       <Navbar />

@@ -1,18 +1,25 @@
-import { FETCH_ALL, CREATE, DELETE, UPDATE, UPVOTE, DOWNVOTE } from '../constants/actionTypes'
+import {
+  FETCH_ALL_QUESTIONS,
+  CREATE_QUESTION,
+  DELETE_QUESTION,
+  UPDATE_QUESTION,
+  UPVOTE_QUESTION,
+  DOWNVOTE_QUESTION,
+} from '../constants/actionTypes'
 
 const questionReducer = (questions = [], action) => {
   switch (action.type) {
-    case FETCH_ALL:
+    case FETCH_ALL_QUESTIONS:
       return action.payload
-    case CREATE:
+    case CREATE_QUESTION:
       return [...questions, action.payload]
-    case DELETE:
+    case DELETE_QUESTION:
       return questions.filter((question) => question._id !== action.payload)
-    case UPDATE:
+    case UPDATE_QUESTION:
       return questions.map((question) => (question._id === action.payload._id ? action.payload : question))
-    case UPVOTE:
+    case UPVOTE_QUESTION:
       return questions.map((question) => (question._id === action.payload._id ? action.payload : question))
-    case DOWNVOTE:
+    case DOWNVOTE_QUESTION:
       return questions.map((question) => (question._id === action.payload._id ? action.payload : question))
     default:
       return questions
