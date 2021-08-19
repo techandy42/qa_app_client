@@ -25,17 +25,19 @@ export default function Navbar() {
       </Link>
       {user ? (
         <div>
-          {user?.profile?.imageUrl ? (
-            <>
-              <img src={user?.profile?.imageUrl} alt="image not found" />
-            </>
-          ) : (
-            <>
-              <div
-                style={{ height: '100px', width: '100px', backgroundColor: user?.profile?.theme ? user?.profile?.theme : DEFAULT }}
-              ></div>
-            </>
-          )}
+          <Link to="/account">
+            {user?.profile?.imageUrl ? (
+              <>
+                <img src={user?.profile?.imageUrl} alt="image not found" />
+              </>
+            ) : (
+              <>
+                <div
+                  style={{ height: '100px', width: '100px', backgroundColor: user?.profile?.theme ? user?.profile?.theme : DEFAULT }}
+                ></div>
+              </>
+            )}
+          </Link>
           <p>{user?.profile?.name}</p>
           <button onClick={() => signout()}>Logout</button>
           {location.pathname !== '/questionForm' ? (

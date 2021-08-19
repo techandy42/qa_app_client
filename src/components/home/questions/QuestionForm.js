@@ -8,10 +8,14 @@ import { PROFILE } from '../../../constants/storageKeys'
 const initialQuestion = { title: '', description: '', tags: '' }
 
 export default function QuestionForm() {
-  const [question, setQuestion] = useState(initialQuestion)
+  const user = JSON.parse(localStorage.getItem(PROFILE))
+  const cachedQuestionId = `questionform-${user?.profile?.googleId || user?.profile?._id}`
+  if (!sessionStorage.getItem(cachedQuestionId)) {
+    sessionStorage.setItem(cachedQuestionId, JSON.stringify(initialQuestion))
+  }
+  const [question, setQuestion] = useState(JSON.parse(sessionStorage.getItem(cachedQuestionId)))
   const dispatch = useDispatch()
   const history = useHistory()
-  const user = JSON.parse(localStorage.getItem(PROFILE))
 
   const addParamsToQuestion = (question) => {
     if (user?.profile?.imageUrl) {
@@ -23,11 +27,19 @@ export default function QuestionForm() {
   const handleSubmit = (e) => {
     e.preventDefault()
     dispatch(createQuestion(addParamsToQuestion(question)))
+    sessionStorage.removeItem(cachedQuestionId)
     history.push('/')
   }
 
   const handleChange = (e) => {
-    setQuestion({ ...question, [e.target.name]: e.target.value })
+    const newQuestion = { ...question, [e.target.name]: e.target.value }
+    setQuestion(newQuestion)
+    sessionStorage.setItem(cachedQuestionId, JSON.stringify(newQuestion))
+  }
+
+  const handleClear = () => {
+    setQuestion(initialQuestion)
+    sessionStorage.setItem(cachedQuestionId, JSON.stringify(initialQuestion))
   }
 
   return (
@@ -43,6 +55,9 @@ export default function QuestionForm() {
         />
         <label htmlFor="tags">Tags</label>
         <input id="tags" name="tags" type="text" value={question.tags} onChange={handleChange} />
+        <button type="button" onClick={handleClear}>
+          Clear
+        </button>
         <button>Submit</button>
       </form>
     </div>

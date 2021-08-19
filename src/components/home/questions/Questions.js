@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom'
 export default function Questions({ isInsideQuestionRoute, questionId }) {
   const questions = useSelector((state) => state.questions)
 
-  //the filtering should in the future be done at mongoose
   return (
     <div>
       {isInsideQuestionRoute ? (

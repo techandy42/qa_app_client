@@ -2,6 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { QUESTION, ANSWER } from '../../../constants/postTypes'
 import { downvoteQuestion } from '../../../actions/questionActions'
+import { downvoteAnswer } from '../../../actions/answerActions'
 
 export default function DownvotePost({ post, type }) {
   const dispatch = useDispatch()
@@ -13,6 +14,7 @@ export default function DownvotePost({ post, type }) {
         dispatch(downvoteQuestion(post._id, post, user))
         break
       case ANSWER:
+        dispatch(downvoteAnswer(post._id, post, user))
         break
       default:
         break

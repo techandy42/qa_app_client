@@ -11,8 +11,7 @@ API.interceptors.request.use((req) => {
 })
 
 export const getQuestions = () => API.get('/questions')
-// export const getFilteredQuestions = (id) => API.get(`/questions/${id}`)
-// export const getUserQuestions = () => API.get(`/`)
+export const getUserQuestions = (userId) => API.get(`/questions/${userId}`)
 export const createQuestion = (question) => API.post('/questions', question)
 export const deleteQuestion = (id) => API.delete(`/questions/${id}`)
 export const updateQuestion = (id, question) => API.patch(`/questions/${id}`, question)
