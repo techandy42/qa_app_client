@@ -28,7 +28,7 @@ export default function QuestionForm() {
     e.preventDefault()
     dispatch(createQuestion(addParamsToQuestion(question)))
     sessionStorage.removeItem(cachedQuestionId)
-    history.push('/')
+    history.goBack()
   }
 
   const handleChange = (e) => {
