@@ -1,11 +1,11 @@
 import axios from 'axios'
-import { PROFILE } from '../constants/storageKeys.js'
+import { USER_PROFILE } from '../constants/storageKeys.js'
 
 const API = axios.create({ baseURL: 'http://localhost:5000' })
 
 API.interceptors.request.use((req) => {
-  if (localStorage.getItem(PROFILE)) {
-    req.headers.authorization = `Bearer ${JSON.parse(localStorage.getItem(PROFILE)).token}`
+  if (localStorage.getItem(USER_PROFILE)) {
+    req.headers.authorization = `Bearer ${JSON.parse(localStorage.getItem(USER_PROFILE)).token}`
   }
   return req
 })

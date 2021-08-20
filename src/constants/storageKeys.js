@@ -1,1 +1,2 @@
-export const PROFILE = 'PROFILE'
+export const USER_PROFILE = 'USER_PROFILE'
+export const ACCOUNT_USER_PROFILE = 'ACCOUNT_USER_PROFILE'

@@ -8,16 +8,12 @@ import { compose, applyMiddleware, createStore } from 'redux'
 import reducers from './reducers/combineReducer'
 import { Provider } from 'react-redux'
 
-import UserProvider from './components/contexts/UserContext'
-
 const store = createStore(reducers, compose(applyMiddleware(thunk)))
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <UserProvider>
-        <App />
-      </UserProvider>
+      <App />
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

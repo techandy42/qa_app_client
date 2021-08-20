@@ -8,19 +8,36 @@ import AnswerForm from '../answers/AnswerForm'
 import { useDispatch, useSelector } from 'react-redux'
 import Answers from '../answers/Answers'
 import { getAnswers } from '../../../actions/answerActions'
+import { useHistory } from 'react-router-dom'
+import { SET_ACCOUNT_USER } from '../../../constants/actionTypes'
 
 export default function QuestionRoute({ question }) {
   const user = useSelector((state) => state.user)
   const dispatch = useDispatch()
+  const history = useHistory()
 
   useEffect(() => {
     dispatch(getAnswers(question._id))
   }, [question])
 
+  const goToAccountUser = () => {
+    if (question?.creator === (user?.profile?.googleId || user?.profile?._id)) {
+      history.push('/account')
+    } else {
+      dispatch({
+        type: SET_ACCOUNT_USER,
+        payload: { userId: question?.creator, name: question.name, imageUrl: question?.imageUrl, theme: question?.theme },
+      })
+      history.push('/accountUser')
+    }
+  }
+
   return (
     <div>
-      {question?.imageUrl && <img src={question?.imageUrl} alt="image not found" />}
-      {question?.theme && <div style={{ height: '100px', width: '100px', backgroundColor: question?.theme }}></div>}
+      <button onClick={goToAccountUser}>
+        {question?.imageUrl && <img src={question?.imageUrl} alt="image not found" />}
+        {question?.theme && <div style={{ height: '100px', width: '100px', backgroundColor: question?.theme }}></div>}
+      </button>
       <p>{question.name}</p>
       <p>{moment(question.createdAt).fromNow()}</p>
       <p>{question.title}</p>

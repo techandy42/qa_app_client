@@ -26,6 +26,8 @@ export const createQuestion = (question) => async (dispatch) => {
     const { data } = await API.createQuestion(question)
 
     dispatch({ type: CREATE_QUESTION, payload: data })
+
+    return data
   } catch (error) {
     console.log(error)
     console.log('Error in creating the question')

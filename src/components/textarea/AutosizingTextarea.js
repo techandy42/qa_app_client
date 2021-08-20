@@ -13,11 +13,11 @@ export default function AutosizingTextarea({ labelName, fieldName, value, handle
       {isQuestionField ? (
         <>
           <label htmlFor={fieldName}>{labelName}</label>
-          <textarea ref={textareaRef} id={fieldName} name={fieldName} value={value} onChange={handleChange} />
+          <textarea maxLength="1000" ref={textareaRef} id={fieldName} name={fieldName} value={value} onChange={handleChange} />
         </>
       ) : (
         <>
-          <textarea ref={textareaRef} value={value} onChange={(e) => handleChange(e, section)} />
+          <textarea maxLength="1000" ref={textareaRef} value={value} onChange={(e) => handleChange(e, section)} />
         </>
       )}
     </div>

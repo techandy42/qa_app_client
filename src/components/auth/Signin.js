@@ -23,9 +23,9 @@ export default function Signin() {
     <div>
       <form onSubmit={handleSubmit}>
         <label htmlFor="email">Email</label>
-        <input id="email" name="email" type="email" value={formData.email} onChange={handleChange} />
+        <input maxLength="50" id="email" name="email" type="email" value={formData.email} onChange={handleChange} />
         <label htmlFor="password">Password</label>
-        <input id="password" name="password" type="password" value={formData.password} onChange={handleChange} />
+        <input maxLength="50" id="password" name="password" type="password" value={formData.password} onChange={handleChange} />
         <button>Submit</button>
       </form>
     </div>

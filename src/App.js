@@ -9,6 +9,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getQuestions } from './actions/questionActions'
 import QuestionRoute from './components/home/questions/QuestionRoute'
+import AccountUser from './components/account/AccountUser'
 
 function App() {
   const dispatch = useDispatch()
@@ -27,6 +28,7 @@ function App() {
         <Route path="/auth" exact render={() => <Auth />} />
         <Route path="/questionForm" exact render={() => <QuestionForm />} />
         <Route path="/account" exact render={() => <Account />} />
+        <Route path="/accountUser" exact render={() => <AccountUser />} />
         {questions.map((question) => (
           <Route path={`/${question._id}`} exact render={() => <QuestionRoute question={question} />} />
         ))}

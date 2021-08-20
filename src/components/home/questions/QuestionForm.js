@@ -3,12 +3,12 @@ import AutosizingTextarea from '../../textarea/AutosizingTextarea'
 import { useDispatch } from 'react-redux'
 import { createQuestion } from '../../../actions/questionActions'
 import { useHistory } from 'react-router-dom'
-import { PROFILE } from '../../../constants/storageKeys'
+import { USER_PROFILE } from '../../../constants/storageKeys'
 
 const initialQuestion = { title: '', description: '', tags: '' }
 
 export default function QuestionForm() {
-  const user = JSON.parse(localStorage.getItem(PROFILE))
+  const user = JSON.parse(localStorage.getItem(USER_PROFILE))
   const cachedQuestionId = `questionform-${user?.profile?.googleId || user?.profile?._id}`
   if (!sessionStorage.getItem(cachedQuestionId)) {
     sessionStorage.setItem(cachedQuestionId, JSON.stringify(initialQuestion))
@@ -24,11 +24,12 @@ export default function QuestionForm() {
     return { ...question, tags: question.tags.split(' '), name: user?.profile?.name, theme: user?.profile?.theme }
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    dispatch(createQuestion(addParamsToQuestion(question)))
+    const createdQuestion = await dispatch(createQuestion(addParamsToQuestion(question)))
+    console.log(createdQuestion)
     sessionStorage.removeItem(cachedQuestionId)
-    history.goBack()
+    history.push(`/${createdQuestion._id}`)
   }
 
   const handleChange = (e) => {
@@ -54,7 +55,7 @@ export default function QuestionForm() {
           isQuestionField={true}
         />
         <label htmlFor="tags">Tags</label>
-        <input id="tags" name="tags" type="text" value={question.tags} onChange={handleChange} />
+        <input maxLength="200" id="tags" name="tags" type="text" value={question.tags} onChange={handleChange} />
         <button type="button" onClick={handleClear}>
           Clear
         </button>

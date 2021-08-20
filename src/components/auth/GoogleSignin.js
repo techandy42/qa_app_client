@@ -14,7 +14,6 @@ export default function GoogleSignin() {
 
     try {
       dispatch({ type: SIGNIN, payload: { profile, token } })
-
       history.goBack()
     } catch (error) {
       alert('Google Login has failed. Please try with a different google account or use the manual signin')

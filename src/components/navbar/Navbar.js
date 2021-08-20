@@ -1,8 +1,9 @@
 import React from 'react'
 import { Link, useHistory, useLocation } from 'react-router-dom'
-import { SIGNOUT } from '../../constants/actionTypes'
+import { RESET_ACCOUNT_USER, SET_ACCOUNT_USER, SIGNOUT } from '../../constants/actionTypes'
 import { useDispatch, useSelector } from 'react-redux'
 import { DEFAULT } from '../../constants/themeTypes'
+import { ACCOUNT_USER_PROFILE } from '../../constants/storageKeys'
 
 export default function Navbar() {
   const dispatch = useDispatch()
@@ -11,11 +12,27 @@ export default function Navbar() {
   const user = useSelector((state) => state.user)
 
   const signout = () => {
+    if (location.pathname === '/account') {
+      dispatch({
+        type: ACCOUNT_USER_PROFILE,
+        payload: {
+          userId: user?.profile?._id || user?.profile?.googleId,
+          name: user?.profile?.name,
+          imageUrl: user?.profile?.imageUrl,
+          theme: user?.profile?.theme,
+        },
+      })
+      history.push('/accountUser')
+    }
     dispatch({ type: SIGNOUT })
   }
 
   const goBackInUrl = () => {
     history.goBack()
+  }
+
+  const goToAccount = () => {
+    history.push('/account')
   }
 
   return (
@@ -25,7 +42,7 @@ export default function Navbar() {
       </Link>
       {user ? (
         <div>
-          <Link to="/account">
+          <button onClick={goToAccount}>
             {user?.profile?.imageUrl ? (
               <>
                 <img src={user?.profile?.imageUrl} alt="image not found" />
@@ -37,9 +54,9 @@ export default function Navbar() {
                 ></div>
               </>
             )}
-          </Link>
+          </button>
           <p>{user?.profile?.name}</p>
-          <button onClick={() => signout()}>Logout</button>
+          <button onClick={signout}>Logout</button>
           {location.pathname !== '/questionForm' ? (
             <>
               <Link to="/questionForm">
