@@ -3,7 +3,7 @@ import Questions from './questions/Questions'
 
 export default function Home() {
   return (
-    <div>
+    <div className="container-body">
       <Questions isInsideQuestionRoute={false} />
     </div>
   )

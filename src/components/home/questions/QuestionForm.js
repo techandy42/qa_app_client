@@ -44,8 +44,9 @@ export default function QuestionForm() {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className="container-form">
+      <form className="container-form-question" onSubmit={handleSubmit}>
+        <h2 className="form-title">Question Form</h2>
         <AutosizingTextarea labelName="Title" fieldName="title" value={question.title} handleChange={handleChange} isQuestionField={true} />
         <AutosizingTextarea
           labelName="Description"

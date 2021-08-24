@@ -10,6 +10,8 @@ API.interceptors.request.use((req) => {
   return req
 })
 
+export const getSearchedQuestions = (searchParam) => API.get(`/searchedQuestions/${searchParam}`)
+
 export const getQuestions = () => API.get('/questions')
 export const getUserQuestions = (userId) => API.get(`/questions/${userId}`)
 export const createQuestion = (question) => API.post('/questions', question)

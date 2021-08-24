@@ -49,8 +49,7 @@ export default function Signup() {
 
   return (
     <div>
-      <h1>Signup</h1>
-      <form onSubmit={handleSubmit}>
+      <form className="container-signup" onSubmit={handleSubmit}>
         <label htmlFor="firstName">First Name</label>
         <input maxLength="50" id="firstName" name="firstName" type="text" value={formData.firstName} onChange={handleChange} />
         <label htmlFor="lastName">Last Name</label>
@@ -77,7 +76,7 @@ export default function Signup() {
           value={formData.confirmPassword}
           onChange={handleChange}
         />
-        <button>Submit</button>
+        <button className="btn-sign-submit">Submit</button>
       </form>
     </div>
   )

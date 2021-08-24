@@ -33,35 +33,40 @@ export default function QuestionRoute({ question }) {
   }
 
   return (
-    <div>
-      <button onClick={goToAccountUser}>
-        {question?.imageUrl && <img src={question?.imageUrl} alt="image not found" />}
-        {question?.theme && <div style={{ height: '100px', width: '100px', backgroundColor: question?.theme }}></div>}
-      </button>
-      <p>{question.name}</p>
-      <p>{moment(question.createdAt).fromNow()}</p>
-      <p>{question.title}</p>
-      <p>{question.description}</p>
-      {question.tags.map((tag) => {
-        return (
-          <>
-            <p>{tag}</p>
-          </>
-        )
-      })}
-      {user ? (
-        <>
+    <div className="container-body">
+      <div className="container-question-route">
+        <div className="container-user-info">
+          <button className="btn-user" onClick={goToAccountUser}>
+            {question?.imageUrl && <img className="img-user" src={question?.imageUrl} alt="image not found" />}
+            {question?.theme && (
+              <div className="icon-user" style={{ backgroundColor: question?.theme }}>
+                {question.name[0]}
+              </div>
+            )}
+          </button>
+          <div className="container-user-info-lines">
+            <p className="user-name">{question.name}</p>
+            <p className="user-time">{moment(question.createdAt).fromNow()}</p>
+          </div>
+        </div>
+        <div className="container-question-route-question">
+          <p className="question-route-title">{question.title}</p>
+          <p className="question-route-description">{question.description}</p>
+          <div className="container-question-route-tags">
+            {question.tags.map((tag) => {
+              return (
+                <>
+                  <p className="question-route-tag">{tag}</p>
+                </>
+              )
+            })}
+          </div>
           <UpvotePost post={question} type={QUESTION} />
           <DownvotePost post={question} type={QUESTION} />
-        </>
-      ) : (
-        <>
-          <p>Upvotes: {question.upvotes.length}</p>
-          <p>Downvotes: {question.downvotes.length}</p>
-        </>
-      )}
-      {user && <AnswerForm question={question} />}
-      <Answers />
+        </div>
+        {user && <AnswerForm question={question} />}
+        <Answers />
+      </div>
       <Questions isInsideQuestionRoute={true} questionId={question._id} />
     </div>
   )

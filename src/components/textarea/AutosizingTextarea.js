@@ -11,10 +11,10 @@ export default function AutosizingTextarea({ labelName, fieldName, value, handle
   return (
     <div>
       {isQuestionField ? (
-        <>
+        <div className="container-autosizing-textarea">
           <label htmlFor={fieldName}>{labelName}</label>
           <textarea maxLength="1000" ref={textareaRef} id={fieldName} name={fieldName} value={value} onChange={handleChange} />
-        </>
+        </div>
       ) : (
         <>
           <textarea maxLength="1000" ref={textareaRef} value={value} onChange={(e) => handleChange(e, section)} />

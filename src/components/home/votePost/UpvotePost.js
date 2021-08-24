@@ -24,12 +24,12 @@ export default function UpvotePost({ post, type }) {
   return (
     <div>
       {user ? (
-        <button onClick={handleUpvote}>
-          {`Upvote${post.upvotes.length > 1 ? 's' : ''}`} {post.upvotes.length}
+        <button className="thumb-down btn-thumb-down" onClick={handleUpvote}>
+          <i class="fas fa-thumbs-up"></i> {post.upvotes.length}
         </button>
       ) : (
-        <p>
-          {`Upvote${post.upvotes.length > 1 ? 's' : ''}`} {post.upvotes.length}
+        <p className="thumb-down">
+          <i class="fas fa-thumbs-up"></i> {post.upvotes.length}
         </p>
       )}
     </div>

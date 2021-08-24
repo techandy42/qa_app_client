@@ -10,6 +10,17 @@ import * as API from '../apis/appApi'
 import applyUpvote from './applyVote/applyUpvote'
 import applyDownvote from './applyVote/applyDownvote'
 
+export const getSearchedQuestions = (searchParam) => async (dispatch) => {
+  try {
+    const { data } = await API.getSearchedQuestions(searchParam)
+
+    dispatch({ type: FETCH_ALL_QUESTIONS, payload: data })
+  } catch (error) {
+    console.log(error)
+    console.log('Error in fetching searched questions')
+  }
+}
+
 export const getQuestions = () => async (dispatch) => {
   try {
     const { data } = await API.getQuestions()

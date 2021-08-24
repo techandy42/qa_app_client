@@ -21,12 +21,12 @@ export default function Signin() {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form className="container-signin" onSubmit={handleSubmit}>
         <label htmlFor="email">Email</label>
         <input maxLength="50" id="email" name="email" type="email" value={formData.email} onChange={handleChange} />
         <label htmlFor="password">Password</label>
         <input maxLength="50" id="password" name="password" type="password" value={formData.password} onChange={handleChange} />
-        <button>Submit</button>
+        <button className="btn-sign-submit">Submit</button>
       </form>
     </div>
   )

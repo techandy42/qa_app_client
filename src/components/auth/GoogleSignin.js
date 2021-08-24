@@ -26,11 +26,14 @@ export default function GoogleSignin() {
   }
 
   return (
-    <div>
-      <h1>Google OAuth</h1>
+    <div className="container-google-login">
       <GoogleLogin
         clientId="555678566581-mteo4n6po7eu93b7hd2hikti9o04srvk.apps.googleusercontent.com"
-        render={(renderProps) => <button onClick={renderProps.onClick}>Google Sign In</button>}
+        render={(renderProps) => (
+          <button onClick={renderProps.onClick} className="google-login">
+            <i class="fab fa-google"></i> Google Sign In
+          </button>
+        )}
         onSuccess={googleSuccess}
         onFailure={googleFailure}
         cookiePolicy="single_host_origin"
