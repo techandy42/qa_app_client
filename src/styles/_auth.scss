@@ -1,0 +1,59 @@
+.container-signin,
+.container-signup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: large;
+  font-family: sans-serif;
+  padding: 1rem;
+  border: 0.1rem solid $lightGrey;
+  border-radius: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  label {
+    margin-top: 0.5rem;
+    margin-bottom: 0.2rem;
+  }
+  input {
+    font-size: large;
+    padding: 0.2rem;
+  }
+}
+.google-login {
+  font-size: large;
+  border-radius: 1rem;
+  border: 0.1rem solid $lightGrey;
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+  width: 100%;
+  &:hover {
+    transition: 0.5s;
+    background-color: $darkGrey;
+    color: $yellow;
+  }
+}
+
+.btn-sign-version-control {
+  border-radius: 0.5rem;
+  border: 0.1rem solid $lightGrey;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+  width: 100%;
+}
+
+.btn-sign-submit {
+  border-radius: 0.5rem;
+  border: 0.1rem solid $lightGrey;
+  padding: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+.container-form-question {
+  display: flex;
+  flex-direction: column;
+  .form-title {
+    font-family: 'Lobster', cursive;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+}

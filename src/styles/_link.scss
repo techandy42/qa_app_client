@@ -1,0 +1,8 @@
+.link {
+  text-decoration: none;
+  color: $black;
+  &:hover {
+    transition: 0.5s;
+    text-decoration: underline;
+  }
+}

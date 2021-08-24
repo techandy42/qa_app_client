@@ -1,0 +1,12 @@
+.container-form {
+  padding-top: $navHeightSmall * 1.5;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@media screen and (min-width: 32rem) {
+  .container-form {
+    padding-top: $navHeightMedium * 1.5;
+  }
+}

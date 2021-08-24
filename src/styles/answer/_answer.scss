@@ -1,0 +1,166 @@
+.container-answer-form {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 0.1rem solid $lightGrey;
+  border-radius: 1rem;
+  .title {
+    font-size: medium;
+    margin-bottom: 1rem;
+  }
+  .container-input-delete {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  textarea,
+  input {
+    padding: 0.5rem;
+    font-family: sans-serif;
+    margin-bottom: 0.5rem;
+    &:focus {
+      outline: none;
+    }
+  }
+  textarea {
+    resize: none;
+  }
+  .container-textarea {
+    width: 100%;
+  }
+  .picture {
+    width: 10rem;
+    margin-bottom: 0.5rem;
+  }
+  .btn-delete {
+    padding: 0.2rem;
+  }
+  .container-btns {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin-left: 10%;
+  }
+  .btn-menu {
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.container-answers {
+  .container-btn-answer-control {
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin-left: 30%;
+  }
+  .btn-answer-control {
+    padding: 0.2rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.container-answer-complete {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 0.1rem solid $lightGrey;
+  border-radius: 1rem;
+  .name {
+    font-size: large;
+    font-weight: bold;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .btn-user {
+    @include clearButton();
+  }
+  .theme-user,
+  .img-user {
+    @include userIcon(4rem, 2rem, $yellow);
+  }
+}
+
+.container-answer {
+  .picture,
+  .paragraph {
+    margin-bottom: 1rem;
+  }
+  .picture {
+    width: 10rem;
+  }
+  .paragraph {
+    padding: 1rem;
+    border: 0.1rem solid $lightGrey;
+    border-radius: 0.5rem;
+    width: 10rem;
+  }
+}
+
+.container-answer-update {
+  .picture {
+    width: 10rem;
+  }
+  textarea {
+    resize: none;
+  }
+  .url,
+  .picture,
+  textarea {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .url,
+  textarea {
+    font-family: sans-serif;
+    padding: 0.5rem;
+  }
+  .container-url-picture {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .container-btn-control {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin-left: 30%;
+  }
+  .btn-control {
+    padding: 0.2rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media screen and (min-width: 32rem) {
+  .container-answer-form {
+    .picture {
+      width: 16rem;
+      margin-bottom: 0.8rem;
+      margin-top: 0.3rem;
+    }
+  }
+  .container-answer {
+    .paragraph {
+      width: 16rem;
+    }
+  }
+}
+
+@media screen and (min-width: 48rem) {
+  .container-answer-form {
+    .picture {
+      width: 20rem;
+      margin-bottom: 1rem;
+      margin-top: 0.5rem;
+    }
+  }
+  .container-answer {
+    .paragraph {
+      width: 20rem;
+    }
+  }
+}

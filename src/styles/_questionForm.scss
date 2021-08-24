@@ -1,0 +1,43 @@
+.container-form-question {
+  font-size: large;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 1rem;
+  border: 0.1rem solid $lightGrey;
+  border-radius: 1rem;
+  label {
+    margin-top: 0.5rem;
+    margin-bottom: 0.2rem;
+  }
+  textarea,
+  input {
+    font-size: large;
+    font-family: sans-serif;
+    padding: 0.5rem;
+    &:focus {
+      outline: none;
+    }
+  }
+  button {
+    width: 40%;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-top: 0.1rem;
+    padding-bottom: 0.1rem;
+    margin-top: 1rem;
+    font-size: large;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.container-autosizing-textarea {
+  display: flex;
+  flex-direction: column;
+  textarea {
+    resize: none;
+  }
+}

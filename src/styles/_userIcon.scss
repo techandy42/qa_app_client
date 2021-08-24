@@ -1,0 +1,16 @@
+@mixin userIcon($dimension, $fontSize, $color) {
+  height: $dimension;
+  width: $dimension;
+  font-size: $fontSize;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: none;
+  color: $color;
+}
+
+@mixin clearButton() {
+  border: none;
+  background-color: $clear;
+}

@@ -1,0 +1,28 @@
+.container-body {
+  padding-top: $navHeightSmall * 1.2;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-90%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media screen and (min-width: 32rem) {
+  .container-body {
+    padding-top: $navHeightMedium * 1.2;
+    transform: translateX(-100%);
+  }
+}
+
+@media screen and (min-width: 48rem) {
+  .container-body {
+    transform: translateX(-120%);
+  }
+}
+
+@media screen and (min-width: 60rem) {
+  .container-body {
+    transform: translateX(-150%);
+  }
+}

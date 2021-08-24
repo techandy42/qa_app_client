@@ -1,0 +1,176 @@
+.container-navbar {
+  @include flex(row);
+  position: fixed;
+  width: 100%;
+  z-index: 2;
+  justify-content: space-between;
+  background-color: $white;
+  height: $navHeightSmall;
+  border-bottom: 0.05rem solid $grey;
+  .btn-main {
+    font-family: 'Lobster', cursive;
+    font-size: large;
+    padding-left: 5%;
+    padding-right: 5%;
+    height: $navHeightSmall;
+    @include clearButton();
+    color: $yellow;
+    background-color: $darkGrey;
+  }
+  .btn-user-icon {
+    display: none;
+  }
+  .btn-hamburger {
+    height: 2rem;
+    width: 2rem;
+    margin-right: 1rem;
+    border: 0.05rem solid $grey;
+    border-radius: 0.2rem;
+  }
+  .btn-nav {
+    display: none;
+  }
+}
+
+.container-search-bar {
+  @include flex(row);
+  .field-search-bar {
+    height: 2rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    width: 80%;
+    border: 0.05rem solid $grey;
+    border-top-left-radius: 0.2rem;
+    border-bottom-left-radius: 0.2rem;
+    &:focus {
+      outline: none;
+      border: 0.1rem solid $yellow;
+    }
+  }
+  .btn-search {
+    height: 2rem;
+    width: 1.4rem;
+    border: 0.05rem solid $grey;
+    border-left: none;
+    border-top-right-radius: 0.2rem;
+    border-bottom-right-radius: 0.2rem;
+  }
+}
+
+.container-side-bar {
+  flex-direction: column;
+  right: 0;
+  z-index: 2;
+  width: 50%;
+  .btn-side-bar-x,
+  .btn-side-bar {
+    color: $white;
+    @include clearButton();
+  }
+  .btn-side-bar-x {
+    margin-left: 0.6rem;
+    margin-bottom: 0.6rem;
+    background-color: $grey;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  .btn-side-bar {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    &:hover {
+      color: $yellow;
+      background-color: $grey;
+      transition: 0.5s;
+    }
+  }
+}
+
+.container-side-bar-background {
+  right: 0;
+  z-index: 1;
+  background-color: $darkGrey;
+  height: 200%;
+  width: 50%;
+}
+
+@media screen and (min-width: 32rem) {
+  .container-navbar {
+    height: $navHeightMedium;
+    .btn-main {
+      font-size: x-large;
+      height: $navHeightMedium;
+    }
+    .btn-hamburger {
+      height: 3rem;
+      width: 3rem;
+    }
+  }
+
+  .container-search-bar {
+    width: 50%;
+    .field-search-bar {
+      height: 3rem;
+      padding-left: 0.7rem;
+      padding-right: 0.7rem;
+      border-top-left-radius: 0.3rem;
+      border-bottom-left-radius: 0.3rem;
+      font-size: large;
+    }
+    .btn-search {
+      height: 3rem;
+      width: 2rem;
+      border-top-right-radius: 0.3rem;
+      border-bottom-right-radius: 0.3rem;
+    }
+  }
+
+  .container-side-bar {
+    width: 40%;
+    .btn-side-bar-x,
+    .btn-side-bar {
+      font-size: large;
+    }
+  }
+
+  .container-side-bar-background {
+    width: 40%;
+  }
+}
+
+@media screen and (min-width: 48rem) {
+  .container-navbar {
+    .btn-main {
+      font-size: xx-large;
+    }
+  }
+}
+
+@media screen and (min-width: 64rem) {
+  .container-navbar {
+    .btn-hamburger {
+      display: none !important;
+    }
+    .container-user-info {
+      @include flex(row);
+      .btn-user-icon {
+        display: block;
+        @include clearButton();
+        .img-user-icon {
+          @include userIcon(3rem, 1.5rem, $yellow);
+        }
+      }
+      .btn-nav {
+        display: block;
+        height: 3rem;
+        border: 0.05rem solid $grey;
+        border-radius: 0.3rem;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+      }
+      .btn-user-icon,
+      .btn-nav {
+        margin-right: 1rem;
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+Account
+
+Has Three Functionalities:
+
+1. Display the user's posts
+
+2. Allows the user to update or delete the posts 
+
+3. Alter the user's account information
