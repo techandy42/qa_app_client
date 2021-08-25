@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { USER_PROFILE } from '../constants/storageKeys.js'
 
-const API = axios.create({ baseURL: 'http://localhost:5000' })
+const API = axios.create({ baseURL: 'https://qa-app-server-techandy42.herokuapp.com/' })
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem(USER_PROFILE)) {
